@@ -3,12 +3,13 @@
   <h6>by <i>FranciscoCharles</i></h6>
 </p>
 
-An interactive simulator that implements the standard Conway Game of Life with a simple menu developed in **Python** + **Pygame**. Test and experience the different types of cell automaton patterns discovered and found in this game.
+An interactive simulator that implements the standard Conway Game of Life with a simple menu developed in **Python** + **Pygame**. Test and experience the different types of cell automaton patterns discovered and found in this game..
 
 <p align="center">
-    <img src="./src/images/example_1.png" width="300">
-    <img src="./src/images/example_2.png" width="300">
+  <img src="images/example_1.png" width="300">
+  <img src="images/example_2.png" width="300">
 </p>
+
 
 # <a name=index>Table of contents 📚</a>
 
@@ -24,8 +25,8 @@ An interactive simulator that implements the standard Conway Game of Life with a
 - use `ESC` to exit / close the program.
 - use `A` to play/pause execution.
 - use `S` to switch between pencil / eraser.
-- use `Q` to zoom out.
-- use `W` to zoom in.
+- use `Q` to decrease block size.
+- use `W` to increase block size.
 - use `Z` to clear/reset the grid.
 - use `X` to clear/reset the grid and generate automatons at random positions.
 
