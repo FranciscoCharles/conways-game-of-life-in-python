@@ -6,8 +6,8 @@
 An interactive simulator that implements the standard Conway Game of Life with a simple menu developed in **Python** + **Pygame**. Test and experience the different types of cell automaton patterns discovered and found in this game..
 
 <p align="center">
-  <img src="images/example_1.png" width="300">
-  <img src="images/example_2.png" width="300">
+  <img src="./src/images/example_1.png" width="300">
+  <img src="./src/images/example_2.png" width="300">
 </p>
 
 
