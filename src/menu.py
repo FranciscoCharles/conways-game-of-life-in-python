@@ -58,8 +58,12 @@ class SettingsDisplay:
 
         text = self.font.render(
             f"population : {grid.population_size}", True, (255, 255, 255))
-        destiny.blit(text, (200, 10))
+        destiny.blit(text, (200, 5))
 
         text = self.font.render(
             f"geracao : {grid.geration}", True, (255, 255, 255))
-        destiny.blit(text, (232, 60))
+        destiny.blit(text, (232, 37))
+
+        text = self.font.render(
+            f"block size : {grid.block_size}", True, (255, 255, 255))
+        destiny.blit(text, (207, 70))

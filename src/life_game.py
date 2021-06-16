@@ -11,6 +11,7 @@ import numpy as np
 from random import choice
 from pygame import Surface
 from typing import Optional
+from math import floor
 
 
 class Automaton:
@@ -38,16 +39,17 @@ class GridUniverse:
 
     def __init__(self, max_width: int, max_height: int, size: Optional[int] = 10, ignore_edge: Optional[bool] = True) -> None:
         self.geration = 0
-        self.automatons_list = []
         self.population_size = 0
+        self.automatons_list = []
 
+        self.block_size = size
         self.max_width = max_width
         self.max_height = max_height
-        self.block_size = size
         self.ignore_edge = ignore_edge
+        self.grid_shift_position = (0, 0)
+        self.change_block_size(size, max_width, max_height)
         self.position_neighbors = np.array(
             [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]], dtype=int)
-        self.change_block_size(size, max_width, max_height)
 
     def init_automatons(self) -> None:
         self.geration = 0
@@ -57,17 +59,26 @@ class GridUniverse:
             self.automatons_list.append(
                 [Automaton('child', False) for _ in range(self.columns)])
 
+    def aumentar_grid(self):
+        if self.block_size < 60:
+            self.change_block_size(self.block_size + 2)
+
+    def diminuir_grid(self):
+        if self.block_size > 10:
+            self.change_block_size(self.block_size - 2)
+
     def change_block_size(self, size: int, width: Optional[int] = None, height: Optional[int] = None) -> None:
         if width is None:
             width = self.max_width
         if height is None:
             height = self.max_height
-        (rows, columns) = (height // size, width // size)
+        (rows, columns) = (int(floor(height / size)), int(floor(width / size)))
         self.rows = rows
         self.columns = columns
         self.height = size * rows
         self.width = size * columns
         self.block_size = size
+        self.centralizar_grid()
         self.init_automatons()
 
     def create_automatons(self) -> None:
@@ -111,6 +122,10 @@ class GridUniverse:
                 if automaton.alive:
                     self.population_size += 1
 
+    def centralizar_grid(self):
+        self.grid_shift_position = (
+            (self.max_width - self.width) // 2, (self.max_height - self.height) // 2)
+
     def toogle_automaton(self, row: int, column: int, alive: bool) -> None:
         automaton = self.automatons_list[row][column]
         if alive and not automaton.alive:
@@ -122,17 +137,23 @@ class GridUniverse:
         automaton.type = 'adult'
 
     def draw_automatons(self, destiny: Surface) -> None:
+        (shift_x, shift_y) = self.grid_shift_position
+        if self.height != self.max_height or self.width != self.max_width:
+            destiny.fill((0x4B0082))
+
+        pygame.draw.rect(destiny, (190, 190, 190), [
+                         shift_x, shift_y, self.width, self.height])
 
         for i in range(self.rows):
             for j in range(self.columns):
                 self.automatons_list[i][j].draw(
-                    destiny, j * self.block_size, i * self.block_size, self.block_size)
+                    destiny, shift_x + j * self.block_size, shift_y + i * self.block_size, self.block_size)
 
-                pygame.draw.line(destiny, (0), (j * self.block_size, 0),
-                                 (j * self.block_size, self.rows * self.block_size), 2)
-            pygame.draw.line(destiny, (0), (0, i * self.block_size),
-                             (self.columns * self.block_size, i * self.block_size), 2)
-        pygame.draw.line(destiny, (0), (self.width, 0),
-                         (self.width, self.height), 2)
-        pygame.draw.line(destiny, (0), (0, self.height),
-                         (self.width, self.height), 2)
+                pygame.draw.line(destiny, (0), (shift_x + j * self.block_size, shift_y),
+                                 (shift_x + j * self.block_size, shift_y + self.rows * self.block_size), 2)
+            pygame.draw.line(destiny, (0), (shift_x, shift_y + i * self.block_size),
+                             (shift_x + self.columns * self.block_size, shift_y + i * self.block_size), 2)
+        pygame.draw.line(destiny, (0), (shift_x + self.width, shift_y),
+                         (shift_x + self.width, shift_y + self.height), 2)
+        pygame.draw.line(destiny, (0), (shift_x, shift_y + self.height),
+                         (shift_x + self.width, shift_y + self.height), 2)

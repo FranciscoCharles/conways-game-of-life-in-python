@@ -11,10 +11,6 @@ from menu import SettingsDisplay
 from life_game import GridUniverse
 
 
-pygame.init()
-pygame.display.set_caption('Jogo da vida')
-
-
 def edit_automanton(settings: SettingsDisplay, grid: GridUniverse, shift_position: Tuple[int, int], mouse_press: bool) -> None:
     if mouse_press and settings.drawing_mode:
         (shift_x, shift_y) = shift_position
@@ -28,6 +24,8 @@ def edit_automanton(settings: SettingsDisplay, grid: GridUniverse, shift_positio
 
 
 def controls(game: bool, settings: SettingsDisplay, grid: GridUniverse, mouse_press: bool) -> Tuple[bool, bool]:
+    global FPS
+
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             game = False
@@ -48,10 +46,12 @@ def controls(game: bool, settings: SettingsDisplay, grid: GridUniverse, mouse_pr
                 if not settings.drawing_mode:
                     settings.drawing_mode = True
                 grid.create_automatons()
-            elif e.key == pygame.K_q and grid.block_size > 10:
-                grid.change_block_size(grid.block_size - 5)
-            elif e.key == pygame.K_w and grid.block_size < 125:
-                grid.change_block_size(grid.block_size + 5)
+            elif e.key == pygame.K_q:
+                grid.diminuir_grid()
+
+            elif e.key == pygame.K_w:
+                grid.aumentar_grid()
+
         elif e.type == pygame.MOUSEBUTTONDOWN:
             mouse_press = True
         elif e.type == pygame.MOUSEBUTTONUP:
@@ -70,6 +70,7 @@ def main() -> None:
     shift_mouse_position = (0, 100)
     settings_rect = [0, 0, SCREEN_W, 100]
 
+    pygame.init()
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
     icon = pygame.image.load('images/icon32.png')
     pygame.display.set_caption('Conway\'s Game of Life')
@@ -82,7 +83,7 @@ def main() -> None:
     pygame.display.flip()
 
     settings = SettingsDisplay()
-    grid_universe = GridUniverse(SCREEN_W, 480, 15, False)
+    grid_universe = GridUniverse(SCREEN_W, 480, 10, False)
 
     while game:
 
