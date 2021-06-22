@@ -3,7 +3,7 @@
   <h6>by <i>FranciscoCharles</i></h6>
 </p>
 
-An interactive simulator that implements the standard Conway Game of Life with a simple menu developed in **Python** + **Pygame**. Test and experience the different types of cell automaton patterns discovered and found in this game..
+An interactive simulator that implements the standard Conway Game of Life with a simple menu developed in **Python** + **Pygame**. Test and experience the different types of cell automaton patterns discovered and found in this game.
 
 <p align="center">
   <img src="./src/images/example_1.png" width="400">
@@ -39,6 +39,7 @@ python main.py
 
 # **<a name=dependencies>🧰 Dependencies ⚙️</a>**  <h6>[back to indice](#index)</h6>
 - **Pygame** == **1.9.6**.
+- **Pillow** == **8.2.0**.
 - **Python** == 3.7 or higher.
 
 # **<a name=version>Version</a>**  <h6>[back to indice](#index)</h6>
