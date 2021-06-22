@@ -40,7 +40,7 @@ python main.py
 # **<a name=dependencies>🧰 Dependencies ⚙️</a>**  <h6>[back to indice](#index)</h6>
 - **Pygame** == **1.9.6**.
 - **Pillow** == **8.2.0**.
-- **Python** == 3.7 or higher.
+- **Python** == **3.7** or higher.
 
 # **<a name=version>Version</a>**  <h6>[back to indice](#index)</h6>
 - current version of the project: 1.0.1.
