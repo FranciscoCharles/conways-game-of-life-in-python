@@ -73,7 +73,7 @@ def main() -> None:
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
     icon = pygame.image.load('images/icon32.png')
-    pygame.display.set_caption('Conway\'s Game of Life')
+    pygame.display.set_caption("Conway's Game of Life")
     pygame.display.set_icon(icon)
 
     grid_surface = pygame.Surface((SCREEN_W, 480))
