@@ -22,13 +22,13 @@ An interactive simulator that implements the standard Conway Game of Life with a
 
 # **<a name=program_shortcuts>👨🏻‍💻 Shortcuts to change program settings 🕹️</a>**  <h6>[back to indice](#index)</h6>
 
-- use `ESC` to exit / close the program.
-- use `A` to play/pause execution.
-- use `S` to switch between pencil / eraser.
-- use `Q` to decrease block size.
-- use `W` to increase block size.
-- use `Z` to clear/reset the grid.
-- use `X` to clear/reset the grid and generate automatons at random positions.
+- use <kbd>ESC</kbd> to exit / close the program.
+- use <kbd>A</kbd> to play/pause execution.
+- use <kbd>S</kbd> to switch between pencil / eraser.
+- use <kbd>Q</kbd> to decrease block size.
+- use <kbd>W</kbd> to increase block size.
+- use <kbd>Z</kbd> to clear/reset the grid.
+- use <kbd>X</kbd> to clear/reset the grid and generate automatons at random positions.
 
 # **<a name=run>How can I run? 🧠💭</a>** <h6>[back to indice](#index)</h6>
 
