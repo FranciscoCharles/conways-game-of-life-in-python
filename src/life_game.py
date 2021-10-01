@@ -59,11 +59,11 @@ class GridUniverse:
             self.automatons_list.append(
                 [Automaton('child', False) for _ in range(self.columns)])
 
-    def aumentar_grid(self):
+    def increase_grid(self):
         if self.block_size < 60:
             self.change_block_size(self.block_size + 2)
 
-    def diminuir_grid(self):
+    def decrease_grid(self):
         if self.block_size > 10:
             self.change_block_size(self.block_size - 2)
 
@@ -78,7 +78,7 @@ class GridUniverse:
         self.height = size * rows
         self.width = size * columns
         self.block_size = size
-        self.centralizar_grid()
+        self.center_grid()
         self.init_automatons()
 
     def create_automatons(self) -> None:
@@ -122,7 +122,7 @@ class GridUniverse:
                 if automaton.alive:
                     self.population_size += 1
 
-    def centralizar_grid(self):
+    def center_grid(self):
         self.grid_shift_position = (
             (self.max_width - self.width) // 2, (self.max_height - self.height) // 2)
 

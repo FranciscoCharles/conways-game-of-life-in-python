@@ -12,6 +12,7 @@ from pygame import Surface
 from life_game import GridUniverse
 from typing import Tuple, List, Optional, Union
 
+
 Color = Union[int, Tuple[int, int, int]]
 
 
@@ -37,7 +38,7 @@ class SettingsDisplay:
     def __init__(self, drawing_mode: Optional[bool] = True, x: Optional[int] = 0, y: Optional[int] = 0) -> None:
         self.image_dict = {False: pygame.image.load('images/play.png').convert_alpha(),
                            True: pygame.image.load('images/pause.png').convert_alpha()}
-        self.icones = {False: pillImageResize('images/eraser.png').convert_alpha(),
+        self.icons = {False: pillImageResize('images/eraser.png').convert_alpha(),
                        True: pillImageResize('images/pencil.png').convert_alpha()}
         self.x = x
         self.y = y
@@ -51,9 +52,9 @@ class SettingsDisplay:
         image = self.image_dict[self.drawing_mode]
         draw_image_in_rect(destiny, image, (30, 28), [
                            16, 18, 64, 64, 2], (0), (140, 140, 140))
-        icone = self.icones[self.drawing]
+        icon = self.icons[self.drawing]
 
-        draw_image_in_rect(destiny, icone, (108, 20), [
+        draw_image_in_rect(destiny, icon, (108, 20), [
                            106, 18, 64, 64, 2], (0), (120, 120, 120))
 
         text = self.font.render(

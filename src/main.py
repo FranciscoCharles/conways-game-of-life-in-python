@@ -47,10 +47,10 @@ def controls(game: bool, settings: SettingsDisplay, grid: GridUniverse, mouse_pr
                     settings.drawing_mode = True
                 grid.create_automatons()
             elif e.key == pygame.K_q:
-                grid.diminuir_grid()
+                grid.decrease_grid()
 
             elif e.key == pygame.K_w:
-                grid.aumentar_grid()
+                grid.increase_grid()
 
         elif e.type == pygame.MOUSEBUTTONDOWN:
             mouse_press = True
