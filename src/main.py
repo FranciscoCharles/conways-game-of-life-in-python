@@ -17,7 +17,8 @@ def edit_automanton(settings: SettingsDisplay, grid: GridUniverse, shift_positio
         (mousex, mousey) = pygame.mouse.get_pos()
         mousex -= shift_x
         mousey -= shift_y
-        if pygame.mouse.get_pressed(0):
+        (click, *_) = pygame.mouse.get_pressed()
+        if click:
             if 0 < mousex < grid.width and 0 < mousey < grid.height:
                 row, column = mousey // grid.block_size, mousex // grid.block_size
                 grid.toogle_automaton(row, column, settings.drawing)
