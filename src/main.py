@@ -17,15 +17,14 @@ def edit_automanton(settings: SettingsDisplay, grid: GridUniverse, shift_positio
         (mousex, mousey) = pygame.mouse.get_pos()
         mousex -= shift_x
         mousey -= shift_y
-        (click, *_) = pygame.mouse.get_pressed()
-        if click:
+        
+        if pygame.mouse.get_pressed()[0]:
             if 0 < mousex < grid.width and 0 < mousey < grid.height:
                 row, column = mousey // grid.block_size, mousex // grid.block_size
                 grid.toogle_automaton(row, column, settings.drawing)
 
 
 def controls(game: bool, settings: SettingsDisplay, grid: GridUniverse, mouse_press: bool) -> Tuple[bool, bool]:
-    global FPS
 
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
